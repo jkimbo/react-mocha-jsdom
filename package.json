@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "babel": "^5.4.7",
-    "mocha": "^2.2.5",
-    "node-jsdom": "^3.1.5"
+    "jsdom": "^5.4.3",
+    "mocha": "^2.2.5"
   }
 }

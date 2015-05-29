@@ -3,15 +3,15 @@
 // so that they can run tests that rely on the DOM
 
 global.initDOM = function() {
-  var jsdom = require('node-jsdom');
+  var jsdom = require('jsdom');
   global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-  global.window = document.parentWindow;
+  global.window = document.defaultView;
   global.navigator = global.window.navigator;
 
   for (var i in require.cache) {
     // clean out requires so that react always uses the correct document
     // jsdom doesn't like this so spare it
-    if (!/node-jsdom/.test(i)) {
+    if (!/jsdom/.test(i)) {
       delete require.cache[i];
     }
   }
