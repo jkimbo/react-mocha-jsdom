@@ -9,8 +9,9 @@ global.initDOM = function() {
   global.navigator = global.window.navigator;
 
   for (var i in require.cache) {
-    // clean out react requires so that it always uses the correct document
-    if (/react/.test(i)) {
+    // clean out requires so that react always uses the correct document
+    // jsdom doesn't like this so spare it
+    if (!/node-jsdom/.test(i)) {
       delete require.cache[i];
     }
   }
